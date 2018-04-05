@@ -1,9 +1,10 @@
 # PhotoAlbumDjango_Project
-Django photo album project
+This is a Photo album social media project with django.
 
-# This is a photo album project with django
-
-# Description:
+# Project Description:
+You can view each album tand their photos without logging in.
+After registering you can createand and like an album, post photos in each album. 
+Detailed info is given below.
 
 # User has 2 role:
 1. Viewer 
@@ -32,3 +33,4 @@ Django photo album project
 - Can Only Delete their own posted photo.
 - Counter for posted Photos and likes. 
 - Viewer Can not like a photo without logging in.
+- Can see other users post activity.
