@@ -1,16 +1,16 @@
 # PhotoAlbumDjango_Project
 Django photo album project
 
-#This is a photo album project with django
+# This is a photo album project with django
 
-#Description:
+# Description:
 
-User has 2 role:
+# User has 2 role:
 1. Viewer 
 2. Registered  User
 
 
-Viewer Actions:
+# Viewer Actions:
 - Can view the album
 - Can view the photo
 - Can Sign Up
@@ -18,7 +18,7 @@ Viewer Actions:
 
 
 
-Registered User Actions:
+# Registered User Actions:
 - Can create album
 - Can Post photo individually and in an specific album
 - Can Like and Unlike an album
@@ -26,3 +26,9 @@ Registered User Actions:
 - Can view the album
 - Can view the photo
 - Can Log in
+
+# Special Features:
+- Can Like Unlike each group.
+- Can Only Delete their own posted photo.
+- Counter for posted Photos and likes. 
+- Viewer Can not like a photo without logging in.
