@@ -1,0 +1,29 @@
+{% extends "photos/photo_base.html" %}
+
+{% block photo_content %}
+
+<div class="item col-xs-5">
+        <div>
+            <h3> {{ photo.message_html|safe }} </h3>
+            <div>
+                <h4>Uploaded by: <strong>{{ photo.user.username }}</strong></h4>
+                <img  class="img-rounded" src="{{ photo.photo.url }}" width="800">
+                
+                        <time class="time"><h5>Photo uploaded at: {{ photo.created_at }}</time></h5>
+                    
+                        {% if photo.album %}
+                            <span class="group-name">in <strong>{{ photo.album.name }}</strong></a></span>
+                        {% endif %}
+                
+                        {% if user.is_authenticated and photo.user == user and not hide_delete %}
+                        <a href="{% url 'photos:delete' pk=photo.pk %}" title="delete" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+                            <span>Delete</span>
+                        </a>
+                    {% endif %}
+                </a>
+                    </div>
+                    </div>
+            </div>
+   
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "photos/photo_base.html" %}
+{% load humanize %}
+
+{% block pre_photo_content %}
+<div class="col-md-4">
+	{% if request.user.is_authenticated %}
+	<div class="card card-with-shadow">
+		<div class="content">
+			<h5 class="title">Your Albums</h5>
+			<ul class="list-unstyled">
+				{# {% get_user_albums as user_albums %}#}
+				{% for like_album in get_user_albums %}
+				<li class="group li-with-bullet">
+					<a href="{% url 'albums:single' slug=like_album.album.slug %}">{{ like_album.album.name }}</a>
+				</li>
+				{% endfor %}
+
+			</ul>
+		</div>
+	</div>
+    {% endif %}
+    
+
+	<div class="card card-with-shadow">
+		<div class="content">
+			<h5 class="title">All albums</h5>
+			<ul class="list-unstyled">
+				{# {% get_other_albums as other_albums %}#}
+				{% for other_album in get_other_albums %}
+					<li class="group li-with-bullet"><a href="{% url 'albums:single' slug=other_album.slug %}">{{ other_album.name }}</a></li>
+				{% endfor %}
+			</ul>
+			
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block photo_content %}
+    <div class="col-md-8">
+        {% for photo in photo_list %}
+        {% include "photos/_photo.html" %}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "albums/album_base.html" %}
+{% load bootstrap3 %}
+
+{% block album_content %}
+<h4>Create A New Album</h4>
+
+  <form method="POST" action="{% url 'albums:create' %}"  enctype="multipart/form-data" id="AlbumForm">
+  	{% csrf_token %}
+		{% bootstrap_form form %}
+		<h5>Upload an album thumbnail here. </h5>
+		
+		<input type="submit" value="Create" class="btn btn-primary btn-large">
+		
+  </form>
+{% endblock %}

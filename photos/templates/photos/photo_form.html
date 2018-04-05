@@ -1,0 +1,14 @@
+{% extends "photos/photo_base.html" %}
+
+{% load bootstrap3 %}
+
+{% block photo_content %}
+
+<h4>Post New Photo</h4>
+<form method="POST" action="{% url 'photos:create' %}"  enctype="multipart/form-data" id="postForm">
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	<input type="submit" value="Post" class="btn btn-primary btn-large">
+</form>
+
+{% endblock %}

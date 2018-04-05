@@ -1,0 +1,17 @@
+{% extends "photos/photo_base.html" %}
+
+{% block prePhoto %}
+<div class="col-md-4">
+	<h1>@{{ photo_user.username }}</h1>
+	<p>Photo Post History</p>
+</div>
+{% endblock %}
+
+
+{% block photo_content %}
+<div class="col-md-8">
+	{% for photo in photo_list %}
+		{% include "photos/_photo.html" %}
+	{% endfor %}
+</div>
+{% endblock %}

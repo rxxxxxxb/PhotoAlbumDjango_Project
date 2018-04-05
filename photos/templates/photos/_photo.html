@@ -1,0 +1,30 @@
+
+<div class="item col-xs-5">
+        <div class="card" style="width: 24rem;">
+            
+            <div class="card-body">
+                <a class="list-group-item" href="{% url 'photos:single' username=photo.user.username pk=photo.pk %}">
+                <strong>Uploaded by: {{ photo.user.username }}</strong>
+                <h5 align="center">{{ photo.message_html|safe }}</h5>
+
+                <img  class="img-rounded" src="{{ photo.photo.url }}" width="200">
+                
+                        <a href="{% url 'photos:for_user' username=photo.user.username %}">@{{ photo.user.username }}</a>
+                          <time class="time">
+                        <a href="{% url 'photos:single' username=photo.user.username pk=photo.pk %}">{{ photo.created_at }}</a></time>
+                    
+                        {% if photo.album %}
+                            <span class="group-name">in <a href="#">{{ photo.album.name }}</a></span>
+                        {% endif %}
+                
+                        {% if user.is_authenticated and photo.user == user and not hide_delete %}
+                        <a href="{% url 'photos:delete' pk=photo.pk %}" title="delete" class="btn btn-simple">
+                            <span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
+                            <span class="text-danger icon-label">Delete</span>
+                        </a>
+                    {% endif %}
+                </a>
+                    </div>
+                    </div>
+            </div>
+   

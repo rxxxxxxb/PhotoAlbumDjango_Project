@@ -1,0 +1,57 @@
+{% extends "albums/album_base.html" %}
+
+{% block preAlbum %}
+    <div class="col-md-4">
+        <div class="content">
+            {% if user.is_authenticated %}
+            <h2>
+                Welcome back
+                <a href="{% url 'photos:for_user' username=user.username %}">@{{user.username }}</a>
+            </h2>
+
+        {% endif %}
+                <h2>Albums</h2>
+
+                <p>Welcome to the Albums Page! Select a Album!</p>
+        </div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'albums:create' %}" class="btn btn-md btn-fill btn-warning">
+            <span class="glyphicon glyphicon-plus-sign"></span> Create New Album!</a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+
+
+{% block album_content %}
+	<div class="col-sm-8">
+		<div class="item col-xs-5">
+		{% for album in object_list %}
+		{% if forloop.counter0|divisibleby:3 %} <div class="row text-center">  {%  endif %}
+
+		<div class="card" style="width: 24rem;">
+				
+			<a class="list-group-item" href="{% url 'albums:single' slug=album.slug %}">
+					<h3 class="title list-group-item-heading">{{ album.name }}</h3>
+				<div class="card-content">
+					{{ album.description_html|safe }} 
+					<img class="img-thumbnail"  src="{{ album.photo.url }}" width="180">
+					<div class="row">
+						<div class="col-md-6">
+							<span class="badge">{{ album.likes.count }}</span>like{{ album.likes.count|pluralize }}
+						</div>
+						<div class="col-md-6">
+							<span class="badge">{{ album.photos.count }}</span>photo{{ album.likes.count|pluralize }}
+						</div>
+					</div>
+				</div>
+			</a>   
+		</div>
+		{%  if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing -->{%  endif %}
+			{% endfor %}
+	</div></div>
+
+
+
+{% endblock %}

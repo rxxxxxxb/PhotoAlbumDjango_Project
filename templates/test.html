@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+      <div class="jumbotron">
+        <h2>Welcome <a href="{% url 'photos:for_user' username=user.username %}">{{user.username }}</a>!!
+        You are now logged in! You Can 
+        <a href="{% url 'photos:create' %}">post photos</a> now.
+      </h2>
+
+
+    </div>
+</div>
+
+{% endblock %}

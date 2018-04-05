@@ -1,0 +1,46 @@
+{% extends "albums/album_base.html" %}
+
+{% block preAlbum %}
+<div class="text-center">
+        <h1>Welcome to <strong>{{album.name}}</strong> Album </h1>
+    <img src="{{ album.photo.url }}" class="img-thumbnail" width="250" >
+</div>
+
+
+    <h4> Like Count: {{album.likes.count}}</h4>
+    <h3>{{album.name}} album`s photo list: </h3>
+    <div class="content">
+
+        {% if user in album.likes.all %}
+            <a href="{% url 'albums:unlike' slug=album.slug %}"
+            class="btn  btn-fill btn-danger">
+            <span class="glyphicon glyphicon glyphicon-thumbs-down"></span> Unlike</a>
+        {% else %}
+            <a href="{% url 'albums:like' slug=album.slug %}" 
+            class="btn btn-fill btn-success">
+            <span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
+        {% endif %}
+           
+    </div>
+    <br>
+{% endblock %}
+
+
+
+{% block album_content %}
+
+    <div class="col-md-8">
+        {% if album.photos.count == 0 %}
+        <h2>No photos in this album yet!</h2>
+
+        {% else %}
+           
+
+            {% for photo in album.photos.all %}
+                {% include "photos/_photo.html" %}
+            {% endfor %}
+
+        {% endif %}
+    </div>
+
+{% endblock %}
