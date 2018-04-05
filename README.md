@@ -1,10 +1,13 @@
 # PhotoAlbumDjango_Project
 This is a Photo album social media project with django.
 
+# To get total understanding of the project flow, Start with urls.py file in each app folder. 
+
 # Project Description:
 You can view each album tand their photos without logging in.
 After registering you can createand and like an album, post photos in each album. 
 Detailed info is given below.
+
 
 # User has 2 role:
 1. Viewer 
