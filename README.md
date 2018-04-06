@@ -16,6 +16,11 @@ Detailed info is given below.
 1. Viewer 
 2. Registered  User
 
+<h3> You can browse the app using this 2 users. You can also register as a new user. </h3>
+<h4> username: rkib | pass: testpassword </h4>
+
+<h4> username: testuser | pass: testpassword </h4>
+
 
 # Viewer Actions:
 - Can view the album
