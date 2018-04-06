@@ -1,7 +1,10 @@
 # PhotoAlbumDjango_Project
 This is a Photo album social media project with django.
 
-# To get total understanding of the project flow, Start with urls.py file in each app folder. 
+<h3> Live Website :  https://album-project.herokuapp.com/ </h3> 
+
+
+<h3> To get total understanding of the project flow, Start with urls.py file in each app folder.</h3> 
 
 # Project Description:
 You can view each album tand their photos without logging in.
