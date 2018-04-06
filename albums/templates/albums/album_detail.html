@@ -16,11 +16,11 @@
             class="btn  btn-fill btn-danger">
             <span class="glyphicon glyphicon glyphicon-thumbs-down"></span> Unlike</a>
         {% else %}
-            <a href="{% url 'albums:like' slug=album.slug %}" 
+            <a href="{% url 'albums:like' slug=album.slug %}"
             class="btn btn-fill btn-success">
             <span class="glyphicon glyphicon-thumbs-up"></span> Like</a>
         {% endif %}
-           
+
     </div>
     <br>
 {% endblock %}
@@ -34,7 +34,7 @@
         <h2>No photos in this album yet!</h2>
 
         {% else %}
-           
+
 
             {% for photo in album.photos.all %}
                 {% include "photos/_photo.html" %}
