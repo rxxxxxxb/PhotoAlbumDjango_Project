@@ -1,0 +1,1 @@
+ web: gunicorn PhotoAlbumDjango_Project.wsgi
