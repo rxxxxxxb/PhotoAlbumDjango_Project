@@ -13,6 +13,7 @@ User = get_user_model()
 class Album(models.Model):
     name = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(allow_unicode=True, unique=True)
+    #save album cover to media/albumCover folder
     photo = models.ImageField(upload_to = 'albumCover/',blank=False) 
     description = models.TextField(blank=True, default='')
     description_html = models.TextField(editable=False, default='', blank=True)

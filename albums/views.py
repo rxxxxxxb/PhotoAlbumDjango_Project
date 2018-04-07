@@ -13,23 +13,28 @@ from albums.models import AlbumLike
 from . import models
 
 
-
+#Album creation class
 class CreateAlbum(LoginRequiredMixin, generic.CreateView):
     fields = ("name", "description","photo")
     model = Album
 
+#single Album view class
 class SingleAlbum(generic.DetailView):
     model = Album
 
+#List all album view class 
 class ListAlbums(generic.ListView):
     model = Album
 
 
+#Album Like class 
 class LikeAlbum(LoginRequiredMixin, generic.RedirectView):
-
+    
+    #refresh the same album after the like
     def get_redirect_url(self, *args, **kwargs):
         return reverse("albums:single",kwargs={"slug": self.kwargs.get("slug")})
-
+    
+    #try catch error
     def get(self, request, *args, **kwargs):
         album = get_object_or_404(Album,slug=self.kwargs.get("slug"))
 
@@ -44,12 +49,14 @@ class LikeAlbum(LoginRequiredMixin, generic.RedirectView):
 
         return super().get(request, *args, **kwargs)
 
-
+#Album UnLike class 
 class UnlikeAlbum(LoginRequiredMixin, generic.RedirectView):
 
+    #refresh the same album after the like
     def get_redirect_url(self, *args, **kwargs):
         return reverse("albums:single",kwargs={"slug": self.kwargs.get("slug")})
-
+    
+    #try catch error
     def get(self, request, *args, **kwargs):
 
         try:

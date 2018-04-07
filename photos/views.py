@@ -13,12 +13,12 @@ from . import models
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-
+#List all photo class
 class PhotoList(SelectRelatedMixin, generic.ListView):
     model = models.Photo
     select_related = ("user", "album")
 
-
+#Individual user photos Class
 class UserPhotos(generic.ListView):
     model = models.Photo
     template_name = "photos/user_photo_list.html"
@@ -38,7 +38,7 @@ class UserPhotos(generic.ListView):
         context["photo_user"] = self.photo_user
         return context
 
-
+#Single photo Detail class 
 class PhotoDetail(SelectRelatedMixin, generic.DetailView):
     model = models.Photo
     select_related = ("user", "album")
@@ -49,9 +49,8 @@ class PhotoDetail(SelectRelatedMixin, generic.DetailView):
             user__username__iexact=self.kwargs.get("username")
         )
 
-
+#Posting/Creating a Photo post class
 class CreatePhoto(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    # form_class = forms.PhotoForm
     fields = ('message','album','photo')
     model = models.Photo
 
@@ -59,14 +58,15 @@ class CreatePhoto(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
     #     kwargs = super().get_form_kwargs()
     #     kwargs.update({"user": self.request.user})
     #     return kwargs
-
+    
+    #form validation
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
 
-
+#Delete a single Class
 class DeletePhoto(LoginRequiredMixin, SelectRelatedMixin, generic.DeleteView):
     model = models.Photo
     select_related = ("user", "album")
