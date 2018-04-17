@@ -1,8 +1,12 @@
 # PhotoAlbumDjango_Project
 This is a Photo album social media project with django.
 
-<h3> Live Website :  https://album-project.herokuapp.com/ </h3> 
+# Live Website 
+<h3> Heroku :  https://album-project.herokuapp.com/ </h3> 
+<h3> PythonAnywhere : http://albumproject.pythonanywhere.com/ </h3>
 
+
+<h3> To run locally, clone the REPO, run requirements.txt and install python packages. Then run the local server using "python manage.py runserver".
 
 <h3> To get total understanding of the project flow, Start with urls.py file in each app folder.</h3> 
 
